@@ -45,12 +45,16 @@ cd busan-sw-maestro-project
 
 ### Step 3. 팀 폴더를 만들고 프로젝트를 넣으세요
 
+> 중요: 프로젝트 폴더 안의 `.git` 디렉터리는 함께 제출하지 마세요. `.git`까지 복사하면 GitHub에서 폴더가 실제 파일이 아니라 submodule/gitlink처럼 등록되어 머지 후 파일이 보이지 않을 수 있습니다.
+
+권장 복사 방법:
+
 ```bash
 # 팀 폴더 생성 (팀 번호와 이름을 자신의 것으로 변경하세요)
 mkdir -p projects/team1-myteamname
 
-# 프로젝트 파일 복사
-cp -r /path/to/your-project/* projects/team1-myteamname/
+# 내부 .git 메타데이터를 제외하고 프로젝트 파일 복사
+rsync -av --exclude='.git' /path/to/your-project/ projects/team1-myteamname/
 ```
 
 완료되면 아래와 같은 구조가 됩니다:
